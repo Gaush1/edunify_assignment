@@ -6,7 +6,7 @@ const SchoolCard = ({ name, address, city, image }) => {
       <div className="relative h-56 sm:h-64">
         <Image
           className="w-full h-full object-cover object-center"
-          src={`/schoolImages/${image}`}
+          src={`/schoolImage/${image}`}
           alt="School Image"
           layout="fill"
         />

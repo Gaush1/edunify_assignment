@@ -1,4 +1,4 @@
-import dbconnection from "@/dbConfig/dbConfig";
+import dbconnection from "../../../../dbConfig/dbConfig";
 import { NextRequest,NextResponse } from "next/server";
 
 export async function GET(req:NextRequest) {

@@ -19,13 +19,16 @@ const AddSchool = () => {
     setSelectedFile(e.target.files[0]);
   };
   const onSubmit = async (data) => {
-    const fileName = selectedFile ? selectedFile.name : "";
-    const formdata = { ...data, image: fileName };
+    let formdata = new FormData();
+    formdata.append("name", data.name);
+    formdata.append("address", data.address);
+    formdata.append("city", data.city);
+    formdata.append("state", data.state);
+    formdata.append("contact", data.contact);
+    formdata.append("email_id", data.email_id);
+    formdata.set("file", selectedFile);
     try {
-      const res = await axios.post(
-        "http://localhost:3000/api/schools/addschool",
-        formdata
-      );
+      const res = await axios.post("/api/schools/addschool", formdata);
       if (res.status === 201) {
         toast.success("school data added successfully");
         reset();
@@ -53,6 +56,7 @@ const AddSchool = () => {
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="mx-auto max-w-md p-6 bg-white rounded-lg shadow-lg w-full"
+        encType="multipart/form-data"
       >
         <div className="space-y-6">
           <div className="flex flex-col">
@@ -104,7 +108,7 @@ const AddSchool = () => {
             <input
               type="tel"
               className="border border-gray-300 rounded-md px-3 py-2"
-              {...register("contact", {required: true})}
+              {...register("contact", { required: true })}
             />
             {errors.contact && (
               <span className="text-red-500">This field is required</span>
@@ -135,7 +139,9 @@ const AddSchool = () => {
               })}
             />
             {errors.email_id && (
-              <span className="text-red-500">Email address must be a valid address</span>
+              <span className="text-red-500">
+                Email address must be a valid address
+              </span>
             )}
           </div>
           <button
