@@ -26,17 +26,16 @@ const SchoolCard = ({ name, address, city, image }) => {
         /* Additional styles for the SchoolCard component */
         .relative {
           width: 100%;
-          padding-top: 75%; /* Adjust this for the desired aspect ratio */
+          padding-top: 75%; 
         }
 
         @media (min-width: 640px) {
           .relative {
-            padding-top: 50%; /* Adjust this for the desired aspect ratio on larger screens */
+            padding-top: 50%; 
           }
         }
 
         .text-gray-700 {
-          /* You can adjust the text color as needed */
           color: #4a5568;
         }
       `}</style>
